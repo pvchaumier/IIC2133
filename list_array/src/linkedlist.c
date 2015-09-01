@@ -12,6 +12,7 @@ void list_alloc_test(LinkedList *list){
 
 LinkedList *list_init()
 {
+    // Allocation of the different pointers.
     LinkedList *list = malloc(sizeof(*list));
     Element *element = malloc(sizeof(*element));
 
@@ -20,6 +21,7 @@ LinkedList *list_init()
         exit(EXIT_FAILURE);
     }
 
+    // We need to define the pointers.
     element->value = 0;
     element->next = NULL;
     element->previous = NULL;
@@ -55,6 +57,7 @@ void list_add(LinkedList *list, int iValueToAdd)
 {
     list_alloc_test(list);
 
+    // We allocate memory for the new element that will be added.
     Element *element = malloc(sizeof(*element));
 
     if (element == NULL)
@@ -62,16 +65,22 @@ void list_add(LinkedList *list, int iValueToAdd)
         exit(EXIT_FAILURE);
     }
 
+    // We initialize the element.
     element->value = iValueToAdd;
+    // the next element is null because we add at the end of the list.
     element->next = NULL;
 
+    // If the list was empty
     if (list->size == 0)
     {
+        // Be careful we need to free the first element because it was 
+        // initiated.
         free(list->first);
         element->previous = NULL;
         list->first = element;
 
     }
+    // If the list already contains at least one other element.
     else
     {
         element->previous = list->last;
@@ -167,6 +176,7 @@ int list_get(LinkedList *list, int iPosition)
 
     Element *elementCurrent;
    
+    // Check if position asked is present in the list.
     if (iPosition > list->size - 1)
     {
         printf("ERROR. The list only contains %d elements.\n", list->size);
@@ -174,18 +184,22 @@ int list_get(LinkedList *list, int iPosition)
     }
     else
     {
+        // We need to go through the list to acced to the iPosition element.
         int i;
         elementCurrent = list->first;
         for (i = 0; i < iPosition; i++)
         {
             elementCurrent = elementCurrent->next;
         }
+        // Now we reached the iPosition element of the list.
         return elementCurrent->value;
     }
 }
 
+
 void list_print(LinkedList *list)
 {
+    // We will go through the list and print each of the element.s
     list_alloc_test(list);
 
     Element *elementCurrent;
