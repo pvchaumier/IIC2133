@@ -101,7 +101,7 @@ void array_add(Array *array, int iValueToAdd){
     // array with an equal sign.
 }
 
-void del(Array *array, int iValueToDel)
+void array_del(Array *array, int iValueToDel)
 {
     array_alloc_test(array);
 
@@ -130,7 +130,7 @@ void del(Array *array, int iValueToDel)
     }
 }
 
-int get(Array *array, int iPosition)
+int array_get(Array *array, int iPosition)
 {
     array_alloc_test(array);
 

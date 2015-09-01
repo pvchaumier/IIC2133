@@ -13,7 +13,7 @@
 
 int main( int argc, char *argv[] )
 {
-    int position, siz, el;
+    int el;
 
     /*** Example for the array ***/
 
@@ -42,7 +42,7 @@ int main( int argc, char *argv[] )
     el = array_get(array, 2);
     printf("%d\n", el); 
 
-    array_array_deinit(array);
+    array_deinit(array);
 
 
     /*** Example for the list ***/
@@ -52,17 +52,17 @@ int main( int argc, char *argv[] )
     list = list_init();
 
     printf("Empty list\n");
-    list_prt(list);
+    list_print(list);
     
     printf("LinkedList with 1, 2 and 3 added.\n");
     list_add(list, 1);
     list_add(list, 2);
     list_add(list, 3);
-    list_prt(list);
+    list_print(list);
     
     printf("LinkedList with 3 deleted.\n");
     list_del(list, 3);
-    list_prt(list);
+    list_print(list);
  
     printf("Looking for element at position number 1.\n");
     el = list_get(list, 1);
@@ -72,7 +72,7 @@ int main( int argc, char *argv[] )
     el = list_get(list, 2);
     printf("%d\n", el); 
 
-    linkedlist_deinit(list);
+    list_deinit(list);
  
     return 0;
 }
