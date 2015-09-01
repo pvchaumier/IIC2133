@@ -89,7 +89,7 @@ void array_deinit(Array *array)
 
 /* ---------------- Manipulation of the data structure ---------------- */
 
-void add(Array *array, int iValueToAdd){
+void array_add(Array *array, int iValueToAdd){
     array_alloc_test(array);
     // Check if it is possible to add a new value, if the content array is full,
     // we need to double its size
@@ -99,31 +99,6 @@ void add(Array *array, int iValueToAdd){
     // Be careful here again, with strings, you would need to use the string.h
     // library and the strcpy function as one cannot generally assign an 
     // array with an equal sign.
-}
-
-void add_at(Array *array, int iValueToAdd, int iPosition)
-{
-    array_alloc_test(array);
-    array_double_size_if_full(array);
-
-    int i;
-
-    // If iPosition is not in array
-    if (iPosition > array->size)
-    {
-        printf("ERROR. There are only %d element in the array.\n", array->size);
-    }
-    else
-    {
-        array->size++;
-        // We need to shift the position to the right to make place for the new
-        // element. To do so, we start from the end of the array.
-        for (i = iPosition; i < array->size - 1; ++i)
-        {
-            array->content[array->size + iPosition - 1 - i] = array->content[array->size + iPosition - 2 - i];
-        }
-        array->content[iPosition] = iValueToAdd;
-    }
 }
 
 void del(Array *array, int iValueToDel)
@@ -155,30 +130,6 @@ void del(Array *array, int iValueToDel)
     }
 }
 
-void del_at(Array *array, int iPositionToDel)
-{
-    /**
-    In this function, we simply shift the values after iPositionToDel to the
-    left. 
-
-    RQ: You will notice that we do not change what is in the last index.
-    **/
-    array_alloc_test(array);
-
-    if (iPositionToDel > array->size - 1)
-    {
-        printf("ERROR. The array only contains %d elements\n", array->size);
-    }
-    else
-    {
-        int i = 0;
-        for (i = iPositionToDel; i < array->size - 1; ++i)
-        {
-            array->content[i] = array->content[i+1];
-        }
-        array->size--;
-    }
-}
 int get(Array *array, int iPosition)
 {
     array_alloc_test(array);
@@ -192,33 +143,7 @@ int get(Array *array, int iPosition)
     return array->content[iPosition];
 }
 
-int find(Array *array, int iValueToFind)
-{
-    array_alloc_test(array);
-
-    int iPosition = 0;
-
-    while (iPosition < array->size)
-    {
-        if (array->content[iPosition] == iValueToFind)
-        {
-            iPosition = array->size;
-            return iPosition;
-        }
-        else
-        {
-            iPosition++;
-        }
-    }
-    return -1;
-}
-
-int size(Array *array){
-    array_alloc_test(array);
-    return array->size;
-}
-
-void prt(Array *array){
+void array_print(Array *array){
     array_alloc_test(array);
 
     printf("[");

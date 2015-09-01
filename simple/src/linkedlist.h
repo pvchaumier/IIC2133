@@ -35,17 +35,13 @@ typedef struct LinkedList
     int size;
 }LinkedList;
 
-LinkedList *linkedlist_init();
+LinkedList *list_init();
 void list_alloc_test(LinkedList *list);
-void linkedlist_deinit(LinkedList *linkedlist);
+void list_deinit(LinkedList *linkedlist);
 
-void l_add(LinkedList *linkedlist, int iValueToAdd);
-void l_add_at(LinkedList *linkedlist, int iValueToAdd, int iPosition);
-void l_del(LinkedList *linkedlist, int iValueToDel);
-void l_del_at(LinkedList *linkedlist, int iPositionToDel);
-int l_get(LinkedList *linkedlist, int iPosition);
-int l_find(LinkedList *linkedlist, int iValueToFind);
-int l_size(LinkedList *linkedlist);
-void l_prt(LinkedList *linkedlist);
+void list_add(LinkedList *linkedlist, int iValueToAdd);
+void list_del(LinkedList *linkedlist, int iValueToDel);
+int list_get(LinkedList *linkedlist, int iPosition);
+void list_print(LinkedList *linkedlist);
 
 #endif

@@ -35,13 +35,9 @@ void array_alloc_test(Array *array);
 void array_double_size_if_full(Array *array);
 void array_deinit(Array *array);
 
-void add(Array *array, int iValueToAdd);
-void add_at(Array *array, int iValueToAdd, int iPosition);
-void del(Array *array, int iValueToDel);
-void del_at(Array *array, int iPositionToDel);
-int get(Array *array, int iPosition);
-int find(Array *array, int iValueToFind);
-int size(Array *array);
-void prt(Array *array);
+void array_add(Array *array, int iValueToAdd);
+void array_del(Array *array, int iValueToDel);
+int array_get(Array *array, int iPosition);
+void array_print(Array *array);
 
 #endif

@@ -10,7 +10,7 @@ void list_alloc_test(LinkedList *list){
     }
 }
 
-LinkedList *linkedlist_init()
+LinkedList *list_init()
 {
     LinkedList *list = malloc(sizeof(*list));
     Element *element = malloc(sizeof(*element));
@@ -31,7 +31,7 @@ LinkedList *linkedlist_init()
     return list;
 }
 
-void linkedlist_deinit(LinkedList *list)
+void list_deinit(LinkedList *list)
 {
     list_alloc_test(list);
 
@@ -51,7 +51,7 @@ void linkedlist_deinit(LinkedList *list)
 
 /* ---------------- Manipulation of the data structure ---------------- */
 
-void l_add(LinkedList *list, int iValueToAdd)
+void list_add(LinkedList *list, int iValueToAdd)
 {
     list_alloc_test(list);
 
@@ -82,70 +82,7 @@ void l_add(LinkedList *list, int iValueToAdd)
     list->size += 1;
 }
 
-void l_add_at(LinkedList *list, int iValueToAdd, int iPosition)
-{
-    list_alloc_test(list);
-
-    Element *element = malloc(sizeof(*element));
-    Element *elementCurrent;
-    int i;
-
-    if (element == NULL)
-    {
-        exit(EXIT_FAILURE);
-    }
-
-    // Testing if the position where we want to add the int is not higher than 
-    // the size of the list
-    // The position to add can be equal to the size because we add before the 
-    // iPosition. So if we want to be able to add at the end of the list, 
-    // we need to allow the iPosition to be equal to the size of the list.
-    if (iPosition > list->size)
-    {
-        printf("ERROR. The list only contains %d elements.\n", list->size);
-    }
-    else
-    {
-        // defining the element struct to add
-        element->value = iValueToAdd;
-
-        elementCurrent = list->first;
-        if (iPosition == 0)
-        {
-            if (list->size == 0)
-            {
-                element->next = NULL;
-                element->previous = NULL;
-                free(elementCurrent);
-            }
-            else
-            {
-                element->next = elementCurrent;
-                element->previous = NULL;
-            }
-            list->first = element;
-        }
-        else
-        {
-            for (i = 1; i < iPosition; i++)
-            {
-                elementCurrent = elementCurrent->next;
-            }
-            element->next = elementCurrent->next;
-            element->previous = elementCurrent;
-            elementCurrent->next = element;
-        }
-
-        if (element->next == NULL)
-        {
-            list->last = element;
-        }
-        
-        list->size += 1;
-    }
-}
-
-void l_del(LinkedList *list, int iValueToDel)
+void list_del(LinkedList *list, int iValueToDel)
 {
     list_alloc_test(list);
 
@@ -224,63 +161,7 @@ void l_del(LinkedList *list, int iValueToDel)
     }
 }
 
-void l_del_at(LinkedList *list, int iPositionToDel)
-{
-    list_alloc_test(list);
-
-    Element *elementNext, *elementCurrent;
-    int iPosition = 0;
-
-    // If the position to delete is not reachable in the list
-    // Be careful that we start at 0 in the numerotation !
-    if (iPositionToDel >= list->size)
-    {
-        printf("ERROR. There are only %d elements in the list.\n", list->size);
-    }
-    else
-    {
-        // if the list contains only one element
-        if (list->size == 1)
-        {
-            free(list->first);
-            list->first = NULL;
-            list->last = NULL;
-            list->size = 0;
-        }
-        else
-        {
-            elementCurrent = list->first;
-            elementNext = elementCurrent->next;
-            if (iPositionToDel == 0)
-            {
-                list->first = elementNext;
-                elementNext->previous = NULL;
-                free(elementCurrent);
-            }
-            else if (iPositionToDel == list->size - 1)
-            {
-                list->last = list->last->previous;
-                free(list->last->next);
-                list->last->next = NULL;
-            }
-            else
-            {
-                while (iPosition < iPositionToDel - 1)
-                {
-                    iPosition++;
-                    elementCurrent = elementNext;
-                    elementNext = elementNext->next;
-                }
-                elementCurrent->next = elementNext->next;
-                elementNext->next->previous = elementCurrent;
-                free(elementNext);
-            }
-            list->size -= 1;
-        }
-    }
-}
-
-int l_get(LinkedList *list, int iPosition)
+int list_get(LinkedList *list, int iPosition)
 {
     list_alloc_test(list);
 
@@ -303,35 +184,7 @@ int l_get(LinkedList *list, int iPosition)
     }
 }
 
-int l_find(LinkedList *list, int iValueToFind)
-{
-    list_alloc_test(list);
-
-    int iPosition = 0;
-    Element *elementCurrent;
-
-    elementCurrent = list->first;
-    while (elementCurrent != NULL)
-    {
-        if (elementCurrent->value == iValueToFind)
-        {   
-            return iPosition;
-        }
-        else
-        {
-            iPosition += 1;
-            elementCurrent = elementCurrent->next;
-        }
-    }
-    return -1;
-}
-
-int l_size(LinkedList *list)
-{
-    return list->size;
-}
-
-void l_prt(LinkedList *list)
+void list_print(LinkedList *list)
 {
     list_alloc_test(list);
 
