@@ -12,9 +12,11 @@ These implementations can be easily modified to obtain a Queue, Stack. It can al
 
 Go in the directory containing the Makefile file within your terminal. Then type the following commands
 
-make all -> if you have not changed anything or if it is the first time you use it. This will compile the program.
-make clean all -> to delete the previous build and make a new one. This will delete the oject files and the executable and then recompile everything.
-make clean -> to delete the previous build
+| Command | comment |
+| ------- | ------- |
+| make all | if you have not changed anything or if it is the first time you use it. This will compile the program |
+| make clean all | to delete the previous build and make a new one. This will delete the oject files and the executable and then recompile everything |
+| make clean | to delete the previous build |
 
 To run the program, use ./example
 
