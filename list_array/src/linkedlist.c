@@ -33,7 +33,7 @@ LinkedList *list_init()
     return list;
 }
 
-void list_deinit(LinkedList *list)
+void list_destroy(LinkedList *list)
 {
     list_alloc_test(list);
 

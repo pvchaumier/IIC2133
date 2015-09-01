@@ -49,7 +49,7 @@ typedef struct LinkedList
 // Memory management part of the implementation
 LinkedList *list_init();
 void list_alloc_test(LinkedList *list);
-void list_deinit(LinkedList *linkedlist);
+void list_destroy(LinkedList *linkedlist);
 
 // Implementation of the basic operations
 void list_add(LinkedList *linkedlist, int iValueToAdd);

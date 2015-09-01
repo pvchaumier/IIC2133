@@ -42,7 +42,7 @@ int main( int argc, char *argv[] )
     el = array_get(array, 2);
     printf("%d\n", el); 
 
-    array_deinit(array);
+    array_destroy(array);
 
 
     /*** Example for the list ***/
@@ -72,7 +72,7 @@ int main( int argc, char *argv[] )
     el = list_get(list, 2);
     printf("%d\n", el); 
 
-    list_deinit(list);
+    list_destroy(list);
  
     return 0;
 }

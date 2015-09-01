@@ -33,7 +33,7 @@ typedef struct Array
 Array *array_init();
 void array_alloc_test(Array *array);
 void array_double_size_if_full(Array *array);
-void array_deinit(Array *array);
+void array_destroy(Array *array);
 
 void array_add(Array *array, int iValueToAdd);
 void array_del(Array *array, int iValueToDel);

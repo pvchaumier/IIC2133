@@ -60,7 +60,7 @@ void array_double_size_if_full(Array *array){
         // Test if reallocation went well
         if (contentTmp == NULL)
         {
-            array_deinit(array);
+            array_destroy(array);
             printf("ERROR. The content could not be reallocated\n");
             exit(EXIT_FAILURE);
         }
@@ -71,7 +71,7 @@ void array_double_size_if_full(Array *array){
     }
 }
 
-void array_deinit(Array *array)
+void array_destroy(Array *array)
 {
     /**
     This function will now deallocate all the pointers we have used. This is 
