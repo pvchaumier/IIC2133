@@ -37,17 +37,12 @@ void list_destroy(LinkedList *list)
 {
     list_alloc_test(list);
 
-    Element *elementCurrent, *elementNext;
-
-    elementCurrent = list->first;
-    while (elementCurrent != NULL)
-    {
-        elementNext = elementCurrent->next;
-        free(elementCurrent);
-        elementCurrent = elementNext;
+    Element *element = list->first;
+    while (element) {
+            Element *next = element->next;
+            free(element);
+            element = next;
     }
-    free(elementCurrent);
-    free(elementNext);
     free(list);
 }
 
