@@ -74,5 +74,9 @@ int main( int argc, char *argv[] )
 
     list_destroy(list);
 
+    LinkedList *empty;
+    empty = list_init();
+    list_destroy(empty);
+
     return 0;
 }
