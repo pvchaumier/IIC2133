@@ -72,11 +72,11 @@ int main( int argc, char *argv[] )
     el = list_get(list, 2);
     printf("%d\n", el);
 
-    list_destroy(list);
+    printf("Removing all items of list");
+    list_del(list, 1);
+    list_del(list, 2);
 
-    LinkedList *empty;
-    empty = list_init();
-    list_destroy(empty);
+    list_destroy(list);
 
     return 0;
 }
