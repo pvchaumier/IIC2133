@@ -25,7 +25,7 @@ LinkedList *list_init()
     element->value = 0;
     element->next = NULL;
     element->previous = NULL;
-    
+
     list->first = element;
     list->last = element;
     list->size = 0;
@@ -73,7 +73,7 @@ void list_add(LinkedList *list, int iValueToAdd)
     // If the list was empty
     if (list->size == 0)
     {
-        // Be careful we need to free the first element because it was 
+        // Be careful we need to free the first element because it was
         // initiated.
         free(list->first);
         element->previous = NULL;
@@ -86,7 +86,7 @@ void list_add(LinkedList *list, int iValueToAdd)
         element->previous = list->last;
         list->last->next = element;
     }
-    
+
     list->last = element;
     list->size += 1;
 }
@@ -96,7 +96,7 @@ void list_del(LinkedList *list, int iValueToDel)
     list_alloc_test(list);
 
     Element *elementCurrent, *elementPrevious;
-    
+
     // List empty
     if (list->size == 0)
     {
@@ -175,7 +175,7 @@ int list_get(LinkedList *list, int iPosition)
     list_alloc_test(list);
 
     Element *elementCurrent;
-   
+
     // Check if position asked is present in the list.
     if (iPosition > list->size - 1)
     {
