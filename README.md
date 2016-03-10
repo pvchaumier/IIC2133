@@ -1,12 +1,12 @@
 # IIC2133 - Code examples
 
-This repo contains code examples to help students of the course IIC2133 - Estructuras de datos of the Pontificia Universidad Catolica, Chile.
+This repo contains code examples to help students of the course IIC2133 - Estructuras de datos y algoritmos of the Pontificia Universidad Catolica, Chile.
 
 ## Content
 
 In the directory list_array, you will find a simple implementation of a dynamic array and of a doubly linked list.
 
-These implementations can be easily modified to obtain a Queue, Stack. It can also serve as a base to implement a hash table, a binary tree etc ...
+These implementations can be easily modified to obtain a Queue, Stack. It can also serve as a base to implement more complex data structures such as a binary tree etc..
 
 ## How to use
 
